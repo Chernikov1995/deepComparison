@@ -15,10 +15,9 @@ function checkPrimitiveType (value) {
   return primitiveTypes.includes(typeof value)
 }
 
-const cache1 = new Map()
-const cache2 = new Map()
 
-function deepEqual (obj1, obj2) {
+
+function deepEqual (obj1, obj2, cache1 = new Map(), cache2 = new Map()) {
   if (Number.isNaN(obj1) || Number.isNaN(obj2)) {
     return Number.isNaN(obj1) && Number.isNaN(obj2)
   }
@@ -73,8 +72,7 @@ function deepEqual (obj1, obj2) {
  * @param obj2
  */
 function wrapper (obj1, obj2) {
-  cache1.clear()
-  cache2.clear()
+
   return deepEqual(obj1, obj2)
 }
 
